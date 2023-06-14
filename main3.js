@@ -49,13 +49,9 @@ function handleDataUpdate(snapshot1) {
     const table = document.querySelector('table');
     const tableBody = table.querySelector('tbody');
 
-    // Clear the table body
-    tableBody.innerHTML = '';
-
     // Iterate over the data from the first database
     let srNo = 1;
-    const promises = []; // Array to hold the promises for updating values
-
+    // ...
     for (const key in data1) {
       if (key === 'qr-verify') {
         continue; // Skip "qr-verify" entry
@@ -72,12 +68,9 @@ function handleDataUpdate(snapshot1) {
       srNo++;
 
       // Update the value of 'qr-verify' in the first database
-      const database1Ref = app1.database().ref().child("parent-node");
-      const promise = database1Ref.set({ 'qr-verify': matchingData ? true : false });
-   
+      const database1Ref = app1.database().ref().child('parent-node');
+      database1Ref.set({ 'qr-verify': matchingData ? true : false });
     }
-
-    // Wait for all the update promises to resolve before displaying the table
-    
+    // ...
   });
 }
